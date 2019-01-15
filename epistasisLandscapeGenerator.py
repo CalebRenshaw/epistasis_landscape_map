@@ -32,7 +32,7 @@ import tkinter as tk  # tkinter should come with python, but if not, use sudo ap
 import argparse, re, datetime, os # likewise should already come with python, possible exception of re
 import pandas as pd
 import pyscreenshot as ImageGrab
-#from PIL import ImageGrab  <- use this for Windows instead of pyscreenshot
+#from PIL import ImageGrab  # uncomment and use this for Windows instead of pyscreenshot
 
 CLI = argparse.ArgumentParser()
 CLI.add_argument('dataFilename', nargs=1, type=str)
@@ -243,7 +243,7 @@ for i in range(numPaths):
         span_y[i].append(canh - (tbh + (tbh * j * 2.5))) # vertical distance between nodes is a node height-and-a-half
         path_x[i][j] = []
 
-        if nodes(varAlleles[i])[j] % 2 == 1:    # if j is a layer with odd nodes
+        if nodes(varAlleles[i])[j] % 2 == 1:    # if j is a layer with odd nodes...
             flanks = int((nodes(varAlleles[i])[j] - 1) / 2) 
             if flanks == 0:
                 path_x[i][j] = [pathMid_x[i]]
@@ -253,7 +253,7 @@ for i in range(numPaths):
                     rFlank = [pathMid_x[i] + (tbw * k * 2)]
                 path_x[i][j] = lFlank + [pathMid_x[i]] + rFlank
 
-        else:   # if j is a layer with even nodes
+        else:   # if j is a layer with even nodes...
             flanks = int((pathSpanNodes[i] - nodes(varAlleles[i])[j]) / 2)
             if flanks == 0:     # layer is widest layer
                 path_x[i][j] = pathSpan_x[i]
@@ -279,7 +279,7 @@ cenLKeys = ['x1', 'yc']                 # rectangle center-left coordinate
 cenRKeys = ['x2', 'yc']                 # rectangle center-right coordinate
 
 
-# Create a canvas to display the landscape maps
+# Create a tkinter canvas to display the landscape maps
 class App(tk.Frame):
     def __init__(self, parent):
         tk.Frame.__init__(self, parent)
